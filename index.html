@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.staticfile.net/vue/3.2.36/vue.global.min.js"></script>
   <title>Articles</title>
   <style>
     /* 基本样式 */
@@ -27,7 +28,7 @@
     }
 
     /* 使用媒体查询来调整列数 */
-	@media screen and (min-width: 450px) {
+    @media screen and (min-width: 450px) {
       .article {
         width: calc(20% - 5px); /* 中小尺寸一行显示五个article */
       }
@@ -85,71 +86,59 @@
   </style>
 </head>
 <body>
-<div class="search-container">
-  <input type="text" id="searchInput" placeholder="输入关键词搜索...">
-  <button id="searchButton">搜索</button>
-</div>
-<div class="article-container">
-  <!-- 循环展示每篇文章 -->
-  <div class="article">
-    <h3>Article Title 1</h3>
-    <p>Article Description 1</p>
-    <a href="#">Read More</a>
+<div id="app">
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="输入关键词搜索...">
+    <button id="searchButton">搜索</button>
   </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
+  <div class="article-container">
+    <!-- 使用v-for指令循环渲染articles数组中的每一篇文章 -->
+    <div class="article" v-for="article in articles" :key="article.title">
+      <h3>{{ article.title }}</h3>
+      <p>{{ article.description }}</p>
+      <a :href="article.url">Read More</a>
+    </div>
   </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <div class="article">
-    <h3>Article Title 2</h3>
-    <p>Article Description 2</p>
-    <a href="#">Read More</a>
-  </div>
-  <!-- 其他文章的展示 -->
-  <!-- ... -->
 </div>
 <script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        articles: [
+          {
+            title: "title1",
+            description: "迅雷",
+            url: "#"
+          },
+          {
+            title: "title2",
+            description: "迅雷",
+            url: "#"
+          },
+          {
+            title: "title3",
+            description: "迅雷",
+            url: "#"
+          }
+        ]
+      };
+    },
+	 mounted() {
+		  // 在组件挂载后发起 Axios 请求获取文章数据
+		  axios.get('/getArticles.json')
+			.then(response => {
+			  // 请求成功，将获取到的文章数据保存到 Vue 实例的 data 中
+			  this.articles = response.data.articles;
+			})
+			.catch(error => {
+			  // 请求失败，打印错误信息
+			  console.error('Error fetching articles:', error);
+			});
+		}
+  });
+
+  app.mount('#app');
+
   // 获取搜索输入框和搜索按钮
   var searchInput = document.getElementById('searchInput');
   var searchButton = document.getElementById('searchButton');
