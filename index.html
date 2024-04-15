@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.staticfile.net/vue/3.2.36/vue.global.min.js"></script>
-  <title>Articles</title>
+  <title>分享</title>
   <style>
     /* 基本样式 */
     .article-container {
@@ -96,7 +96,7 @@
     <div class="article" v-for="article in articles" :key="article.title">
       <h3>{{ article.title }}</h3>
       <p>{{ article.description }}</p>
-      <a :href="article.url">Read More</a>
+      <a :href="article.url">前往链接</a>
     </div>
   </div>
 </div>
