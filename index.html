@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    <style>
+        /* 基本样式 */
+		.article-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around; /* 修改为space-around */
+			padding: 5px;
+		}
+        .article {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            width: calc(50% - 20px); /* 默认情况下，一行显示两个article */
+        }
+        .article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* 使用媒体查询来调整列数 */
+        @media screen and (min-width: 768px) {
+            .article {
+                width: calc(20% - 5px); /* 中尺寸一行显示五个article */
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .article {
+                width: calc(20% - 5px); /* 大尺寸一行显示五个article */
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .article {
+                width: calc(33.33% - 5px); /* 小尺寸一行显示三个article */
+            }
+        }
+    </style>
+</head>
+<body>
+	 <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+    </div>
+    <div class="article-container">
+        <!-- 循环展示每篇文章 -->
+        <div class="article">
+            <h3>Article Title 1</h3>
+            <p>Article Description 1</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <div class="article">
+            <h3>Article Title 2</h3>
+            <p>Article Description 2</p>
+            <a href="#">Read More</a>
+        </div>
+        <!-- 其他文章的展示 -->
+        <!-- ... -->
+    </div>
+<script>
+    // 获取输入框和文章容器
+    const searchInput = document.getElementById('searchInput');
+    const articles = document.querySelectorAll('.article');
+
+    // 监听输入框的输入事件
+    searchInput.addEventListener('input', function () {
+        // 获取输入框的值，并转换为小写
+        const searchText = searchInput.value.toLowerCase();
+
+        // 遍历所有文章
+        articles.forEach(article => {
+            // 获取文章标题并转换为小写
+            const title = article.querySelector('h3').innerText.toLowerCase();
+            
+            // 如果文章标题包含搜索关键词，则显示该文章，否则隐藏
+            if (title.includes(searchText)) {
+                article.style.display = 'block';
+            } else {
+                article.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>
