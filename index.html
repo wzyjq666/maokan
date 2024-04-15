@@ -1,137 +1,187 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
-    <style>
-        /* 基本样式 */
-		.article-container {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around; /* 修改为space-around */
-			padding: 5px;
-		}
-        .article {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 15px;
-            width: calc(50% - 20px); /* 默认情况下，一行显示两个article */
-        }
-        .article img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles</title>
+  <style>
+    /* 基本样式 */
+    .article-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; /* 修改为space-around */
+      padding: 5px;
+      margin-bottom: 20px; /* 增加行与行之间的间距 */
+    }
+    .article {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      width: calc(50% - 20px); /* 默认情况下，一行显示两个article */
+      margin: 5px; /* 调整同一行文章之间的间距 */
+    }
+    .article img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
 
-        /* 使用媒体查询来调整列数 */
-        @media screen and (min-width: 768px) {
-            .article {
-                width: calc(20% - 5px); /* 中尺寸一行显示五个article */
-            }
-        }
+    /* 使用媒体查询来调整列数 */
+	@media screen and (min-width: 450px) {
+      .article {
+        width: calc(20% - 5px); /* 中小尺寸一行显示五个article */
+      }
+    }
+    @media screen and (min-width: 600px) {
+      .article {
+        width: calc(20% - 5px); /* 中尺寸一行显示五个article */
+      }
+    }
 
-        @media screen and (min-width: 1024px) {
-            .article {
-                width: calc(20% - 5px); /* 大尺寸一行显示五个article */
-            }
-        }
+    @media screen and (min-width: 1024px) {
+      .article {
+        width: calc(20% - 5px); /* 大尺寸一行显示五个article */
+      }
+    }
 
-        @media screen and (max-width: 767px) {
-            .article {
-                width: calc(33.33% - 5px); /* 小尺寸一行显示三个article */
-            }
-        }
-    </style>
+    @media screen and (max-width: 450px) {
+      .article {
+        width: calc(33.33% - 5px); /* 小尺寸一行显示三个article */
+      }
+    }
+    /* 修改搜索框样式 */
+    .search-container {
+      margin-bottom: 20px; /* 增加搜索框与文章容器之间的间距 */
+      text-align: center; /* 水平居中搜索框 */
+    }
+
+    #searchInput {
+      padding: 10px; /* 增加内边距 */
+      width: 60%; /* 设置宽度 */
+      border: 2px solid #ccc; /* 设置边框 */
+      border-radius: 5px; /* 设置圆角 */
+      font-size: 16px; /* 设置字体大小 */
+      outline: none; /* 去除默认的外边框 */
+    }
+
+    #searchInput::placeholder {
+      color: #999; /* 设置占位符颜色 */
+    }
+    /* 修改搜索按钮样式 */
+    #searchButton {
+      padding: 10px 20px; /* 设置内边距 */
+      border: none; /* 去除边框 */
+      border-radius: 5px; /* 设置圆角 */
+      background-color: #007bff; /* 设置背景颜色 */
+      color: #fff; /* 设置文字颜色 */
+      font-size: 16px; /* 设置字体大小 */
+      cursor: pointer; /* 设置鼠标样式为手型 */
+      transition: background-color 0.3s; /* 添加过渡效果 */
+    }
+
+    #searchButton:hover {
+      background-color: #0056b3; /* 鼠标悬停时改变背景颜色 */
+    }
+  </style>
 </head>
 <body>
-	 <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search...">
-    </div>
-    <div class="article-container">
-        <!-- 循环展示每篇文章 -->
-        <div class="article">
-            <h3>Article Title 1</h3>
-            <p>Article Description 1</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <div class="article">
-            <h3>Article Title 2</h3>
-            <p>Article Description 2</p>
-            <a href="#">Read More</a>
-        </div>
-        <!-- 其他文章的展示 -->
-        <!-- ... -->
-    </div>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="输入关键词搜索...">
+  <button id="searchButton">搜索</button>
+</div>
+<div class="article-container">
+  <!-- 循环展示每篇文章 -->
+  <div class="article">
+    <h3>Article Title 1</h3>
+    <p>Article Description 1</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <div class="article">
+    <h3>Article Title 2</h3>
+    <p>Article Description 2</p>
+    <a href="#">Read More</a>
+  </div>
+  <!-- 其他文章的展示 -->
+  <!-- ... -->
+</div>
 <script>
-    // 获取输入框和文章容器
-    const searchInput = document.getElementById('searchInput');
-    const articles = document.querySelectorAll('.article');
+  // 获取搜索输入框和搜索按钮
+  var searchInput = document.getElementById('searchInput');
+  var searchButton = document.getElementById('searchButton');
 
-    // 监听输入框的输入事件
-    searchInput.addEventListener('input', function () {
-        // 获取输入框的值，并转换为小写
-        const searchText = searchInput.value.toLowerCase();
+  // 监听搜索按钮的点击事件
+  searchButton.addEventListener('click', function() {
+    // 执行搜索功能
+    searchArticles();
+  });
 
-        // 遍历所有文章
-        articles.forEach(article => {
-            // 获取文章标题并转换为小写
-            const title = article.querySelector('h3').innerText.toLowerCase();
-            
-            // 如果文章标题包含搜索关键词，则显示该文章，否则隐藏
-            if (title.includes(searchText)) {
-                article.style.display = 'block';
-            } else {
-                article.style.display = 'none';
-            }
-        });
-    });
+  // 搜索文章的函数
+  function searchArticles() {
+    // 获取搜索关键词
+    var keyword = searchInput.value.toLowerCase();
+
+    // 获取所有文章
+    var articles = document.getElementsByClassName('article');
+
+    // 遍历所有文章
+    for (var i = 0; i < articles.length; i++) {
+      var article = articles[i];
+      var title = article.querySelector('h3').innerText.toLowerCase();
+      var description = article.querySelector('p').innerText.toLowerCase();
+
+      // 如果文章标题或描述包含搜索关键词，则显示该文章，否则隐藏
+      if (title.includes(keyword) || description.includes(keyword)) {
+        article.style.display = 'block';
+      } else {
+        article.style.display = 'none';
+      }
+    }
+  }
 </script>
 </body>
 </html>
