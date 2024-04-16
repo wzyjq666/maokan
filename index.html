@@ -30,18 +30,16 @@
     }
 
     /* 使用媒体查询来调整列数 */
-        @media screen and (min-width: 408px) {
-            .article {
-                width: calc(20% - 5px); /* 中尺寸一行显示五个article */
-            }
-        }
-
         @media screen and (min-width: 1024px) {
             .article {
                 width: calc(15% - 5px); /* 大尺寸一行显示五个article */
             }
         }
-
+        @media screen and (min-width: 408px) {
+            .article {
+                width: calc(20% - 5px); /* 中尺寸一行显示五个article */
+            }
+        }
         @media screen and (max-width: 400px) {
             .article {
                 width: calc(33.33% - 5px); /* 小尺寸一行显示三个article */
