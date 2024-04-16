@@ -29,22 +29,30 @@
       border-radius: 5px;
     }
 
-    /* 使用媒体查询来调整列数 */
-        @media screen and (min-width: 1024px) {
-            .article {
-                width: calc(15% - 5px); /* 大尺寸一行显示五个article */
-            }
-        }
-        @media screen and (min-width: 408px) {
-            .article {
-                width: calc(20% - 5px); /* 中尺寸一行显示五个article */
-            }
-        }
-        @media screen and (max-width: 400px) {
-            .article {
-                width: calc(33.33% - 5px); /* 小尺寸一行显示三个article */
-            }
-        }
+/* 使用媒体查询来调整列数 */
+@media screen and (max-width: 460px) {
+    .article {
+        width: calc(33.3% - 5px); /* 小尺寸一行显示三个article */
+    }
+}
+
+@media screen and (min-width: 461px) and (max-width: 640px) {
+    .article {
+        width: calc(25% - 5px); /* 中尺寸一行显示四个article */
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width: 750px) {
+    .article {
+        width: calc(25% - 5px); /* 中尺寸一行显示四个article */
+    }
+}
+
+@media screen and (min-width: 751px) {
+    .article {
+        width: calc(20% - 5px); /* 大尺寸一行显示五个article */
+    }
+}
     /* 修改搜索框样式 */
     .search-container {
       margin-bottom: 20px; /* 增加搜索框与文章容器之间的间距 */
