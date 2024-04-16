@@ -140,7 +140,7 @@ var _hmt = _hmt || [];
     },
 	 mounted() {
 		  // 在组件挂载后发起 Axios 请求获取文章数据
-		  axios.get('/getArticles.json')
+		  axios.get('/getArticles.json?timestamp=' + Date.now())
 			.then(response => {
 			  // 请求成功，将获取到的文章数据保存到 Vue 实例的 data 中
 			  this.articles = response.data.articles;
