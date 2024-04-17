@@ -27,7 +27,7 @@
       padding: 5px;
       margin-bottom: 20px; /* 增加行与行之间的间距 */
     }
-    .article {
+    .articlePai .article {
       border: 1px solid #ccc;
       border-radius: 5px;
       padding: 15px;
@@ -112,8 +112,8 @@
     </button>
   </div>
   <div class="article-container">
-	<div class="article">
-      <img border="0" src="/微信公众号.jpg" width="228" v-if="is_search"/>
+	<div class="articlePai" v-if="!is_search">
+      <img border="0" src="/微信公众号.jpg" width="228"/>
       <p>扫码关注公众号，永不走丢。</p>
 	</div>
     <!-- 使用v-for指令循环渲染articles数组中的每一篇文章 -->
@@ -156,12 +156,11 @@
       close(){
       },
       search(){
+        this.is_search=!this.is_search;
         // 获取搜索关键词
         var keyword = this.text;
-        this.is_search=!this.is_search;
         // 获取所有文章
         var articles = document.getElementsByClassName('article');
-
         // 遍历所有文章
         for (var i = 0; i < articles.length; i++) {
           var article = articles[i];
