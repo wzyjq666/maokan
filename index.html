@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.31/vue.global.min.js" type="application/javascript"></script>
-<script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/axios/0.26.0/axios.min.js" type="application/javascript"></script>
-<script>
-!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"3I7t19SOys97tnx4",ck:"3I7t19SOys97tnx4"});
-</script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?2440efe9bb4a46feccdb5d7b63155f7f";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.31/vue.global.min.js" type="application/javascript"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/axios/0.26.0/axios.min.js" type="application/javascript"></script>
+  <script>
+    !function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"3I7t19SOys97tnx4",ck:"3I7t19SOys97tnx4"});
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2440efe9bb4a46feccdb5d7b63155f7f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
   <title>每日分享</title>
   <style>
     /* 基本样式 */
@@ -40,30 +40,30 @@ var _hmt = _hmt || [];
       border-radius: 5px;
     }
 
-/* 使用媒体查询来调整列数 */
-@media screen and (max-width: 460px) {
-    .article {
+    /* 使用媒体查询来调整列数 */
+    @media screen and (max-width: 460px) {
+      .article {
         width: calc(33.3% - 5px); /* 小尺寸一行显示三个article */
+      }
     }
-}
 
-@media screen and (min-width: 461px) and (max-width: 640px) {
-    .article {
+    @media screen and (min-width: 461px) and (max-width: 640px) {
+      .article {
         width: calc(25% - 5px); /* 中尺寸一行显示四个article */
+      }
     }
-}
 
-@media screen and (min-width: 641px) and (max-width: 750px) {
-    .article {
+    @media screen and (min-width: 641px) and (max-width: 750px) {
+      .article {
         width: calc(25% - 5px); /* 中尺寸一行显示四个article */
+      }
     }
-}
 
-@media screen and (min-width: 751px) {
-    .article {
+    @media screen and (min-width: 751px) {
+      .article {
         width: calc(20% - 5px); /* 大尺寸一行显示五个article */
+      }
     }
-}
     /* 修改搜索框样式 */
     .search-container {
       margin-bottom: 20px; /* 增加搜索框与文章容器之间的间距 */
@@ -102,11 +102,20 @@ var _hmt = _hmt || [];
 <body>
 <div id="app">
   <div class="search-container">
-    <input type="text" id="searchInput" placeholder="输入关键词搜索...">
-	&nbsp;&nbsp;
-    <button id="searchButton">搜索</button>
+    <input type="text" id="searchInput" placeholder="输入关键词搜索..." v-model="text" v-if="is_search">
+    &nbsp;&nbsp;
+    <button @click="search()" id="searchButton" v-if="is_search">
+      搜索
+    </button>
+    <button @click="this.text='';search()" id="searchButton" v-if="!is_search">
+      返回
+    </button>
   </div>
   <div class="article-container">
+	<div class="article">
+      <img border="0" src="/微信公众号.jpg" width="228" v-if="is_search"/>
+      <p>扫码关注公众号，永不走丢。</p>
+	</div>
     <!-- 使用v-for指令循环渲染articles数组中的每一篇文章 -->
     <div class="article" v-for="article in articles" :key="article.title">
       <h3>{{ article.title }}</h3>
@@ -119,73 +128,71 @@ var _hmt = _hmt || [];
   const app = Vue.createApp({
     data() {
       return {
-        articles: [
+        text:"",
+        is_search:true,
+        articles: [{
+          "title": "玻璃边界",
+          "description": "迅雷",
+          "url": "https://pan.xunlei.com/s/VNvKACEnM5sx6hltcwnU_Y8LA1?pwd=vecx"
+        },
           {
-            title: "title1",
-            description: "迅雷",
-            url: "#"
+            "title": "豆子芝麻茶",
+            "description": "迅雷",
+            "url": "https://pan.xunlei.com/s/VNvPOfwWSVk4-5IzlmZFvHWmA1?pwd=a24y"
           },
           {
-            title: "title2",
-            description: "迅雷",
-            url: "#"
+            "title": "过好这一生的10个真相",
+            "description": "迅雷",
+            "url": "https://pan.xunlei.com/s/VNvUHzqKGPdviisHqVBvwyCSA1?pwd=qrcq"
           },
           {
-            title: "title3",
-            description: "迅雷",
-            url: "#"
-          }
-        ]
+            "title": "茅台传",
+            "description": "迅雷",
+            "url": "https://pan.xunlei.com/s/VNvAccxb7BX8d40pNt4yshtKA1?pwd=pe8x"
+          }]
       };
     },
-	 mounted() {
-		  // 在组件挂载后发起 Axios 请求获取文章数据
-		  axios.get('/getArticles.json?timestamp=' + Date.now())
-			.then(response => {
-			  // 请求成功，将获取到的文章数据保存到 Vue 实例的 data 中
-			  this.articles = response.data.articles;
-			})
-			.catch(error => {
-			  // 请求失败，打印错误信息
-			  console.error('Error fetching articles:', error);
-			});
-		}
+    methods:{
+      close(){
+      },
+      search(){
+        // 获取搜索关键词
+        var keyword = this.text;
+        this.is_search=!this.is_search;
+        // 获取所有文章
+        var articles = document.getElementsByClassName('article');
+
+        // 遍历所有文章
+        for (var i = 0; i < articles.length; i++) {
+          var article = articles[i];
+          var title = article.querySelector('h3').innerText.toLowerCase();
+          var description = article.querySelector('p').innerText.toLowerCase();
+
+          // 如果文章标题或描述包含搜索关键词，则显示该文章，否则隐藏
+          if (title.includes(keyword) || description.includes(keyword)) {
+            article.style.display = 'block';
+          } else {
+            article.style.display = 'none';
+          }
+        }
+      }
+    },
+    mounted() {
+      // 在组件挂载后发起 Axios 请求获取文章数据
+      axios.get('/getArticles.json?timestamp=' + Date.now())
+          .then(response => {
+            // 请求成功，将获取到的文章数据保存到 Vue 实例的 data 中
+            this.articles = response.data.articles;
+          })
+          .catch(error => {
+            // 请求失败，打印错误信息
+            console.error('Error fetching articles:', error);
+          });
+    }
   });
 
   app.mount('#app');
 
-  // 获取搜索输入框和搜索按钮
-  var searchInput = document.getElementById('searchInput');
-  var searchButton = document.getElementById('searchButton');
-
-  // 监听搜索按钮的点击事件
-  searchButton.addEventListener('click', function() {
-    // 执行搜索功能
-    searchArticles();
-  });
-
-  // 搜索文章的函数
-  function searchArticles() {
-    // 获取搜索关键词
-    var keyword = searchInput.value.toLowerCase();
-
-    // 获取所有文章
-    var articles = document.getElementsByClassName('article');
-
-    // 遍历所有文章
-    for (var i = 0; i < articles.length; i++) {
-      var article = articles[i];
-      var title = article.querySelector('h3').innerText.toLowerCase();
-      var description = article.querySelector('p').innerText.toLowerCase();
-
-      // 如果文章标题或描述包含搜索关键词，则显示该文章，否则隐藏
-      if (title.includes(keyword) || description.includes(keyword)) {
-        article.style.display = 'block';
-      } else {
-        article.style.display = 'none';
-      }
-    }
-  }
 </script>
 </body>
 </html>
