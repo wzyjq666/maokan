@@ -27,7 +27,14 @@
       padding: 5px;
       margin-bottom: 20px; /* 增加行与行之间的间距 */
     }
-    .articlePai .article {
+	.articlePai {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      width: calc(50% - 20px); /* 默认情况下，一行显示两个article */
+      margin: 5px; /* 调整同一行文章之间的间距 */
+    }
+    .article {
       border: 1px solid #ccc;
       border-radius: 5px;
       padding: 15px;
@@ -112,7 +119,7 @@
     </button>
   </div>
   <div class="article-container">
-	<div class="articlePai" v-if="!is_search">
+	<div class="articlePai" v-if="is_search">
       <img border="0" src="/微信公众号.jpg" width="228"/>
       <p>扫码关注公众号，永不走丢。</p>
 	</div>
