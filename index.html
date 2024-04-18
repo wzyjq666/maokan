@@ -153,13 +153,12 @@
       <tbody>
       <tr>
         <td>
-          已经搜索“{{ search_word }}”，点击下侧链接前往 &nbsp;
-          <span style="color: red;">
-                       ↓↓↓
-                      </span>
+          已经搜索“{{ text }}”，点击下侧链接前往
         </td>
         <td>
-          <a href="/search">点我返回重新搜索</a>
+          <span style="color: red;">
+                       链接↓↓↓
+          </span>
         </td>
       </tr>
       <tr v-for="item in options" :key="item.id">
@@ -206,7 +205,7 @@
       close(){
         this.text='';
         this.search();
-        this.options=this.optionsPai;
+        this.options = JSON.parse(JSON.stringify(this.optionsPai));
       },
       getAllSite(){
         let th=this
@@ -218,12 +217,17 @@
           if(response.data.status==true){
             this.optionsPai=response.data.allSearchSite;
             this.options = JSON.parse(JSON.stringify(this.optionsPai));
-            then.search();
+            if(this.options!=null){
+              for (var i = 0; i < this.options.length; i++) {
+                this.options[i].searchSite = this.options[i].searchSite.split(this.testUtf8).join(this.text);
+              }
+            }
           }else{
           }
         }).catch(function (error) {
-          th.optionsPai=[{"id":990,"name":"安娜的文档","site":"https://zh.annas-archive.gs/","searchSite":"https://zh.annas-archive.gs/search?q=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1010,"name":"莫若书单","site":"https://www.mrsd.top/","searchSite":"https://www.mrsd.top/search.html?keywords=%E6%B5%8B%E8%AF%95","isInsert":"x"},{"id":1023,"name":"tacoso","site":"https://www.tacoso.cc/","searchSite":"https://www.tacoso.cc/search?keyword=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1025,"name":"书舟","site":"https://www.shuzhou.cc/","searchSite":"https://www.shuzhou.cc/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1030,"name":"书堆阅读","site":"https://www.werebook.com/","searchSite":"https://www.werebook.com/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1045,"name":"rejoice博客","site":"http://www.rejoiceblog.com/","searchSite":"http://www.rejoiceblog.com/article/search/page/1/?keyword=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1060,"name":"有益读","site":"https://www.youyidu.xyz/","searchSite":"https://www.youyidu.xyz/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1070,"name":"维京小屋","site":"https://vikingcabin.com/","searchSite":"https://vikingcabin.com/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1090,"name":"读书小站","site":"https://ibooks.org.cn/","searchSite":"https://ibooks.org.cn/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1150,"name":"知识库","site":"https://www.zhishikoo.com/","searchSite":"https://www.zhishikoo.com/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1180,"name":"书格","site":"https://new.shuge.org/","searchSite":"https://new.shuge.org/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"},{"id":1350,"name":"全索引","site":"http://www.ctfile.cn/","searchSite":"http://www.ctfile.cn/?s=%E6%B5%8B%E8%AF%95","isInsert":"y"}]
-          th.options = JSON.parse(JSON.stringify(th.optionsPai));
+          for (var i = 0; i < this.options.length; i++) {
+            this.options[i].searchSite = this.options[i].searchSite.split(this.testUtf8).join(this.text);
+          }
         });
       },
       search(){
@@ -246,10 +250,6 @@
           } else {
             article.style.display = 'none';
           }
-        }
-        const replaceWith =  this.text;
-        for (var i = 0; i < this.options.length; i++) {
-          this.options[i].searchSite = this.options[i].searchSite.split(this.testUtf8).join(replaceWith);
         }
       }
     },
