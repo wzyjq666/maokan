@@ -121,7 +121,13 @@
   <div class="article-container">
     <div class="articlePai" v-if="is_search">
       <img border="0" src="/微信公众号.jpg" style="width:180px"/>
-      <p>本站只收藏精品，已有{{articles.length}}本书，扫码关注公众号，永不走丢。</p>
+      <p>
+        本站只收藏精品，已有
+        <b>   
+          {{articles.length}}
+        </b>
+        本书，扫码关注公众号，永不走丢。
+      </p>
     </div>
     <!-- 使用v-for指令循环渲染articles数组中的每一篇文章 -->
     <div class="article" v-for="article in articles" :key="article.title">
