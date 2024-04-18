@@ -133,7 +133,7 @@
     <div class="article" v-for="article in articles" :key="article.title">
       <h3>{{ article.title }}</h3>
       <p>{{ article.description }}</p>
-      <a :href="article.url">前往链接</a>
+      <a :href="article.url" target="_blank">前往链接</a>
     </div>
   </div>
 </div>
